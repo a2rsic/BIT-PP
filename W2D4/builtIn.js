@@ -22,7 +22,12 @@
 // function newArray(arr) {
 //   var newArr = [];
 //   for (var i = 0; i < arr.length; i++) {
-//     if (arr[i] / arr[i] === 1 || arr[i] === 0) {
+//     if (
+//       arr[i] / arr[i] === 1 ||
+//       arr[i] === 0 ||
+//       arr[i] === false ||
+//       arr[i] === true
+//     ) {
 //       newArr[newArr.length] = arr[i];
 //     }
 //   }
@@ -30,3 +35,27 @@
 // }
 
 // newArray([NaN, 0, 15, false, -22, "", undefined, 47, null]);
+
+function newArray(arr) {
+  var string = "";
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] != undefined && arr[i] != null && isFinite(arr[i])) {
+      string += arr[i];
+    }
+  }
+  return string;
+}
+
+var result = newArray([
+  NaN,
+  0,
+  15,
+  false,
+  -22,
+  "",
+  undefined,
+  47,
+  null,
+  Infinity
+]);
+console.log(result);
