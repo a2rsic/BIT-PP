@@ -86,6 +86,41 @@ console.log(arrayOfDigits(45673));
 
 
 
+// 6.Write a function to input temperature in Centigrade and convert to Fahrenheit.
+
+    function convertCentigradeToF(number) {
+        var centigradeValue;
+        
+        centigradeValue = (number * 9/5) + 32;
+        return centigradeValue;
+
+
+    }
+    console.log(convertCentigradeToF(40));
+
+
+
+    
+// 8.Write a function to find the maximum element in array of numbers. Filter out all non-number elements
+
+    function findMinAndMax(array) {
+        var minValue = 0;
+        var maxValue = 0;
+
+        for (var i = 0; i < array.length; i++) {
+            if (minValue < array[i]) {
+                minValue = array[i];
+            }
+            if (maxValue > array[i]) {
+                maxValue = array[i];
+            }
+        }
+        var result = [minValue, maxValue];
+        return result;
+    }
+    console.log(findMinAndMax([2, 4, -6, 8, -2, 10]));
+
+
 
 // 9.Write a function to find the median element of array
 
@@ -102,5 +137,20 @@ function findMedianElement(array) {
     return medianElement;
 }
 console.log(findMedianElement([1, 2, 5, 3, 4, 5, 6]));
+
+
+
+
+// 10.Write a function to find the element that occurs most frequently.
+
+    function findFrequentlyElement(array) {
+        var frequentlyElement;
+
+        for(var i = 0; i < array.length; i++) {
+            frequentlyElement = array[i]
+        }
+        return frequentlyElement;
+    }
+    console.log(findFrequentlyElement([5, 3, 4, 5, 2, 5]));
 
 
