@@ -32,8 +32,14 @@ function findsElements(array) {
   }
   return result;
 }
-console.log(findsElements(["JavaScript", "Programming", "fun", "product"]));
+// console.log(findsElements(["JavaScript", "Programming", "fun", "product"]));
 
 /*
 c. Write a function that expects an array and a callback function that filters out some of the elements. Use functions defined in a) or b) to test it. 
 */
+
+function filtersOutElemnts(array, f) {
+  return f(array);
+
+}
+console.log(filtersOutElemnts(["JavaScript", "Programming", "fun", "product"], findsElements));
