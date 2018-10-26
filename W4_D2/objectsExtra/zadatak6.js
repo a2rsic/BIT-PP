@@ -41,10 +41,19 @@ console.log(totalPrice(newArray));
 function averagePrice(array) {
     var result;
     for (var i = 0; i < array.length; i++) {
-
+        var product = array[i];
+        result = product.price / product.length;
     }
+    return result;
 }
+console.log(averagePrice(newArray));
 
 
 
 //d. Write a function that prints out the name of the most expensive product on your shopping list. Write the name in uppercase. 
+function mostExpensiveProduct(array) {
+    var element;
+    for (var i = 0; i < array.length; i++) {
+
+    }
+}
