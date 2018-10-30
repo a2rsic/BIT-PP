@@ -19,16 +19,14 @@
             this.number = Math.floor(((Math.random() * (100 - 10)) + 10));
             if (arguments[0] != "b" && arguments[0] != "e") {
                 this.category = "e";
-            }
-            else {
+            } else {
                 this.category = arguments[0];
             }
         } else {
             this.number = number || Math.floor(((Math.random() * (100 - 10)) + 10));
             if (category == undefined || (category != "b" && category != "e")) {
                 this.category = "e";
-            }
-            else {
+            }else {
                 this.category = category;
             }
         }

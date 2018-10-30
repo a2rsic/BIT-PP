@@ -29,7 +29,7 @@
 
             for (var i = 0; i < this.listOfProduct.length; i++) {
 
-                var element = this.listOfProduct[i].price;
+                var element = this.listOfProduct[i];
 
                 var elementPrice = element.price;
 
@@ -39,6 +39,7 @@
             return sum / this.listOfProduct.length;
 
         }
+        console.log(calculatesAveragePrice());
 
         this.getMostExpensive = function () {
             var mostExpensiveProduct;
@@ -57,8 +58,8 @@
     mojaKorpa.addProduct(grejp);
     mojaKorpa.addProduct(banana);
     mojaKorpa.addProduct(apple);
-    // mojaKorpa.calculatesAveragePrice();
-    console.log(mojaKorpa.listOfProduct);
+    mojaKorpa.calculatesAveragePrice();
+    console.log();
 
 })();
 
