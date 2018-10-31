@@ -34,28 +34,28 @@
 
         }
         this.getData = function () {
-            
+
         }
 
     }
 
     function Festival(name, numberOfMovies) {
-    this.name = name;
-    this.numberOfMovies = numberOfMovies;
-    this.listOfPrograms = [];
+        this.name = name;
+        this.numberOfMovies = numberOfMovies;
+        this.listOfPrograms = [];
 
-    this.addProgram = function (program) {
-        this.program = program;
-        this.listOfPrograms.push(program);
+        this.addProgram = function (program) {
+            this.program = program;
+            this.listOfPrograms.push(program);
+        }
     }
-}
 
     var genre = new Genre("Action");
     console.log(genre.getData());
 
-    var movie = new Movie("titanic", "drama", "150min");
+    var movie = new Movie("titanic", drama, s150min);
     console.log(movie.getData());
 
-    var program = new Program ("2018-11-01", "4");
+    var program = new Program("2018-11-01", "4");
     console.log(program.addMovie());
 })();
