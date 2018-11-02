@@ -4,42 +4,47 @@
 
     function Genre(name) {
         this.name = name;
-        this.getData = function () {
-            var newString = this.name[0] + this.name[name.length - 1];
-            return newString.toUpperCase();
-        }
     }
+    Genre.prototype.getData = function () {
+        var newString = this.name[0] + this.name[this.name.length - 1];
+        return newString.toUpperCase();
+    }
+    // var drama = new Genre("Drama");
 
     // console.log(drama.getData());
 
     function Movie(title, genre, length) {
         this.title = title;
-        this.genre = genre.name;
+        this.genre = genre;
         this.length = length;
-        this.getData = function () {
-            return this.title + ", " + this.length + "min " + ", " + this.genre.getData();
-        }
     }
 
+    Movie.prototype.getData = function () {
+        return this.title + ", " + this.length + "min " + ", " + this.genre.getData();
+    }
+    // var titanic = new Movie("Titanic", drama, 150);
     // console.log(titanic.getData());
 
     function Program(date) {
         this.date = new Date(date);
         this.totalNumberOfMovies = 0;
         this.listOfMovies = [];
-        this.addMovie = function (movie) {
-            this.listOfMovies.push(movie);
-            this.totalNumberOfMovies++;
-        }
-        this.getData = function () {
 
-            var totalLength = 0;
-            for (var i = 0; i < this.listOfMovies.length; i++) {
-                totalLength += this.listOfMovies[i].length;
-            }
-            return totalLength;
-        }
     }
+    Program.prototype.addMovie = function (movie) {
+        this.listOfMovies.push(movie);
+        this.totalNumberOfMovies++;
+    }
+
+    Program.prototype.getData = function () {
+
+        var totalLength = 0;
+        for (var i = 0; i < this.listOfMovies.length; i++) {
+            totalLength += this.listOfMovies[i].length;
+        }
+        return totalLength;
+    }
+
     // var program = new Program(new Date().getDate, 4);
 
     // console.log(program.listOfMovies);
@@ -48,14 +53,19 @@
         this.name = name;
         this.numberOfMovies = numberOfMovies;
         this.listOfPrograms = [];
-
-        this.addProgram = function (program) {
-            this.listOfPrograms.push(program);
-        }
-        this.getData = function () {
-
-        }
     }
+    Festival.prototype.addProgram = function (program) {
+        this.listOfPrograms.push(program);
+    }
+    Festival.prototype.getData = function () {
+        var firstLine = this.name + this.numberAllMovies() + "\n";
+        var movieDetails = "";
+        for (var i = 0; i < this.programList.length; i++) {
+            movieDetails += "\t" + this.programList[i].getData();
+        }
+        return firstLine + movieDetails;
+    }
+
 
     function createMovie(title, genre, length) {
         return new Movie(title, genre, length);

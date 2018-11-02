@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movie Form</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+    <h1>Movie list</h1>
+    <div class="container">
+
+        <h3>Movie</h3>
+        <div>
+            <label>
+                Title <br>
+                <input class="first" type="text" placeholder="Title">
+            </label>
+            <br>
+            <br>
+            <label>Length (min) <br>
+                <input class="second" type="text" placeholder="Length in min"> </label>
+            <label>
+                <br>
+                <br>
+                <select id="third" name="secet" id="genre">
+                    <option value="action"> Action</option>
+                    <option value="drama"> Drama</option>
+                    <option value="comedy"> Comedy</option>
+                    <option value="horror"> Horror</option>
+                </select>
+            </label>
+            <br>
+            <br>
+            <!-- create movie <input type="button"> -->
+            <button class="green" type="button">Create movie</button>
+
+        </div>
+    </div>
+    <script src="./js/form.js"></script>
+    <script src="./js/entities.js"></script>
+</body>
+
+</html>

@@ -4,18 +4,23 @@
 
     function Genre(name) {
         this.name = name;
-        this.getData = function () {
-            return (name[0] + name[name.length - 1]).toUpperCase();
-        }
     }
+
+    Genre.prototype.getData = function () {
+        return (name[0] + name[name.length - 1]).toUpperCase();
+    }
+
     function Movie(title, genre, length) {
         this.title = title;
-        this.genre = genre.name;
+        this.genre = genre;
         this.length = length;
-        this.getData = function () {
-            return title + ", " + length + "min" + ", " + genre.getData();
-        }
     }
+
+    Movie.prototype.getData = function () {
+        return this.title + ", " + this.length + "min" + ", " + this.genre.getData();
+    }
+
+
     function Program(date) {
         this.date = new Date(date);
         this.movieList = [];
