@@ -1,130 +1,129 @@
-var dataModule = (function () {
+const dataModule = (function () {
 
-    var storage = {
+    const storage = {
         movies: [],
     }
 
-    function Movie(title, length, genre) {
-        this.title = title;
-        this.length = length;
-        this.genre = genre;
+    class Movie {
+        constructor(title, length, genre) {
+            this.title = title;
+            this.length = length;
+            this.genre = genre;
+        }
+
+        getInfo() {
+            return `${this.title}, ${this.length}, ${this.genre}`;
+
+        }
     }
 
-    Movie.prototype.getInfo = function () {
-        return this.title + ", " + this.length + ", " + this.genre;
 
-    }
+    const createMovie = ({ title, length, genre }) => new Movie(title, length, genre)
 
-    function createMovie(title, length, genre) {
-        return new Movie(title, length, genre)
-    }
 
-    function addMovie(movie) {
+    const addMovie = movie => {
         storage.movies.push(movie);
     }
 
-    function calculateTotalLength() {
-        var totalLength = 0;
-        for (var i = 0; i < storage.movies.length; i++) {
+    const calculateTotalLength = () => {
+        let totalLength = 0;
+        for (let i = 0; i < storage.movies.length; i++) {
             movieLength = storage.movies[i].length;
             totalLength += movieLength;
         }
         return totalLength;
     }
 
-    function getTotalLength() {
-        return calculateTotalLength();
-    }
+    const getTotalLength = () => calculateTotalLength();
+
 
     return {
-        createMovie: createMovie,
-        addMovie: addMovie,
-        getTotalLength: getTotalLength
+        createMovie,
+        addMovie,
+        getTotalLength
     }
 
 })();
 
 var uiModule = (function () {
-    var $movieTitle = $(".movie-title");
-    var $movieLength = $(".movie-length");
-    var $selectGenre = $(".select-genre");
-    var $movieListDiv = $(".movie-list");
-    var $allMoviesLength = $(".allMoviesLength");
+    const $movieTitle = $(".movie-title");
+    const $movieLength = $(".movie-length");
+    const $selectGenre = $(".select-genre");
+    const $movieListDiv = $(".movie-list");
+    const $allMoviesLength = $(".allMoviesLength");
 
-    function collectInput() {
-        var title = $movieTitle.val();
-        var length = parseInt($movieLength.val());
-        var genre = $selectGenre.val();
-        if (!false)
+    const collectInput = () => {
+        const title = $movieTitle.val();
+        const length = Number.parseInt($movieLength.val());
+        const genre = $selectGenre.val();
 
-            return {
-                title: title,
-                length: length,
-                genre: genre
-            }
+        return {
+            title,
+            length,
+            genre
+        }
 
     }
 
-    function displayMovie(movie) {
-        var $p = $("<p>").text(movie.getInfo());
+    const displayMovie = movie => {
+        const $p = $("<p>").text(movie.getInfo());
         $movieListDiv.append($p);
     }
 
-    function displayTotalLength(totalLength) {
-        var $p = $("<p>").text("Total length: " + totalLength);
+    const displayTotalLength = totalLength => {
+        const $p = $("<p>").text("Total length: " + totalLength);
         $allMoviesLength.append($p);
     }
 
-    function displayError() {
-        var $p = $("<p>").text("Wrong input!");
+    const displayError = () => {
+        const $p = $("<p>").text("Wrong input!");
         $movieListDiv.append($p);
     }
 
-    function resetInput() {
+    const resetInput = () => {
         $movieTitle.val("");
         $movieLength.val("");
         $selectGenre.val("-");
     }
 
     return {
-        collectInput: collectInput,
-        displayMovie: displayMovie,
-        displayTotalLength: displayTotalLength,
-        resetInput: resetInput,
-        displayError: displayError
+        collectInput,
+        displayMovie,
+        displayTotalLength,
+        resetInput,
+        displayError
     }
 })();
 
-var controller = (function (data, ui) {
+const controller = (function (data, ui) {
 
-    function init() {
-        setupEventListeners()
-    }
+    const init = () => setupEventListeners()
 
-    function setupEventListeners() {
 
-        var $inputButton = $(".create-movie");
+    const setupEventListeners = () => {
+
+        const $inputButton = $(".create-movie");
         $inputButton.on("click", onAddMovieHandler);
     }
 
-    function onAddMovieHandler(event) {
-        var movieInput = ui.collectInput();
-        if (movieInput.title == "" || movieInput.length == "") { // TODO NaN works
+    const onAddMovieHandler = event => {
+        const movieInput = ui.collectInput();
+        if (movieInput.title === "" || movieInput.length === "") { // TODO NaN works
             ui.displayError();
-        } else {
-            var fullMovie = data.createMovie(movieInput.title, movieInput.length, movieInput.genre);
-            ui.displayMovie(fullMovie);
-            data.addMovie(fullMovie);
-            ui.displayTotalLength(data.getTotalLength());
-            ui.resetInput();
-
+            return;
         }
+        const fullMovie = data.createMovie(movieInput);
+        ui.displayMovie(fullMovie);
+        data.addMovie(fullMovie);
+        ui.displayTotalLength(data.getTotalLength());
+        ui.resetInput();
+
 
 
     }
 
     return {
-        init: init
+        init
     }
 
 
